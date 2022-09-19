@@ -1,6 +1,21 @@
 import { Dialog, Transition } from "@headlessui/react"
+import Link from "next/link"
 import { Fragment, useState } from "react"
-import { Fade as Hamburger } from "hamburger-react"
+import {BiMenuAltLeft} from 'react-icons/bi'
+import {GrFormClose} from 'react-icons/gr'
+
+const links = [
+  {name: 'All', handle: 'all'},
+  {name: 'The Heavies', handle: 'the-heavies'},
+  {name: 'Portable', handle: 'portable'},
+  {name: 'Desktop', handle: 'desktop'},
+  {name: 'Induction Heaters', handle: 'induction-heaters'},
+  {name: 'Torch Powered', handle: 'torch-powered'},
+]
+
+const links2 = [
+  'Our journal', 'About us', 'Help/FAQ', 'Get in touch'
+]
 
 export default function MyModal() {
   let [isOpen, setIsOpen] = useState(false)
@@ -15,18 +30,18 @@ export default function MyModal() {
 
   return (
     <>
-      <div className=" flex items-center justify-center relative">
+      <div className=" flex lg:hidden items-center justify-center relative ">
         <button
           type="button"
           onClick={openModal}
-          className="rounded-md text-sm font-medium  hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 max-w-fit"
+          className="rounded-md text-sm font-medium  hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 hoverRed"
         >
-          <Hamburger rounded toggled={isOpen} size={24} />
+          <BiMenuAltLeft size={26} />
         </button>
       </div>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Dialog as="div" className="relative z-10 lg:hidden" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -50,14 +65,33 @@ export default function MyModal() {
                 leaveFrom="opacity-100  translate-x-0"
                 leaveTo="opacity-0  -translate-x-full"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden min-w-[260px] bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden min-w-[260px] bg-white dark:bg-slate-800 p-6 text-left align-middle shadow-xl transition-all flex flex-col gap-8">
                   <Dialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    as="button"
+                    onClick={closeModal}
+                    className="text-lg font-medium leading-6 text-gray-900 dark:text-white -translate-x-2 hoverRed focus:outline-none focus:ring-0"
                   >
-                    Search
+                    <GrFormClose size={33} />
                   </Dialog.Title>
-                  <div className="mt-2"></div>
+                  <div className="">
+                    <ul className="flex flex-col gap-2">
+                      {links.map(link => (
+
+                      <li key={link.handle}>
+                        <Link href="/"><a className="text-2xl font-medium">{link.name}</a></Link>
+                      </li>
+                      ))}
+                     
+                    </ul>
+                  </div>
+                    <ul className="flex flex-col gap-2">
+                      {links2.map(link => (
+                        <li key={link.handle}>
+                       <p>{link}</p>
+                      </li>
+                      ))}
+                    </ul>
+                    <p>Login</p>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

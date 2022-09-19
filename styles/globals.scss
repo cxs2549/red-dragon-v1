@@ -5,9 +5,8 @@
 
 
 @import "open-props/style";
-
-/* optional imports that use the props */
 @import "open-props/normalize";
+
 @import "rsuite/dist/rsuite.css";
 
 
@@ -17,6 +16,10 @@
 }
 
 html, body {
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+        display: none;
+    }
     @media (prefers-color-scheme: dark) {
         background-color: var(--gray-900);
         color: white;
@@ -25,8 +28,20 @@ html, body {
 
 svg {
     stroke: currentColor;
+    fill: currentColor;
+    path {
+        stroke: currentColor
+    }
 }
 
 li {
     padding: 0;
+}
+
+.hoverRed {
+    @apply hover:text-red-500 transition-colors duration-200;
+}
+
+a:visited {
+    color: currentColor;
 }
