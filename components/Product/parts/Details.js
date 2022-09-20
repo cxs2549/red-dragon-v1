@@ -11,7 +11,7 @@ const Details = ({ product }) => {
       <h3 className="text-2xl font-bold mb-4">${product.variants[0].price}</h3>
       <button
         onClick={() => addItemTocheckout(product.variants[0].id, 1)}
-        className="bg-green-600 text-white w-full text-lg mt-auto mb-2 rounded py-3 font-bold"
+        className="bg-green-600 text-white text-lg mt-auto mb-2 w-1/2 rounded py-3 font-bold"
       >
         Add to Cart
       </button>

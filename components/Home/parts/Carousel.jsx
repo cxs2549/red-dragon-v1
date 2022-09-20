@@ -22,11 +22,12 @@ const MyCarousel = ({ items }) => {
           <Link href={`/products/${item.handle}`}>
             <a href="">
               <Image
-                className="rounded-2xl"
+                className="rounded-2xl bg-white"
                 width={500}
                 height={500}
                 src={item.images[0].src}
                 alt=""
+               
               />
             </a>
           </Link>

@@ -7,7 +7,7 @@ class ShopProvider extends Component {
     checkout: {},
   }
   componentDidMount() {
-    if (localStorage.checkout_id) {
+    if (localStorage.getItem("checkout_id")) {
       this.fetchCheckout(localStorage.getItem("checkout_id"))
     } else {
       this.createCheckout()

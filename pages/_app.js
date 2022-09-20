@@ -1,4 +1,7 @@
 import "../styles/globals.scss"
+import "open-props/style"
+import "open-props/normalize"
+
 import Header from "../components/Header/Header"
 import { AnimatePresence } from "framer-motion"
 import ShopProvider from "../context/shopContext"
